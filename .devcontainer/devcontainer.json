@@ -1,0 +1,52 @@
+// For format details, see https://aka.ms/devcontainer.json.
+
+{
+  "name": "rails",
+  "service": "app",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Features to add to the dev container.
+  // More info: https://containers.dev/features.
+  "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // This can be used to network with other containers or the host.
+  "forwardPorts": [3000, 5432, 6379],
+
+  "portsAttributes": {
+    "3000": { "label": "rails" },
+    "5432": { "label": "postgres" },
+    "6379": { "label": "redis" }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "bin/setup",
+
+  // tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "editor.formatOnSave": true,
+      "editor.insertSpaces": true,
+      "editor.renderWhitespace": "none",
+      "editor.renderLineHighlight": "all",
+      "editor.rulers": [120],
+      "editor.scrollBeyondLastLine": false,
+      "editor.stickyScroll.enabled": false,
+      "editor.tabSize": 2,
+      "files.insertFinalNewline": true,
+      "files.trimFinalNewlines": true,
+      "files.trimTrailingWhitespace": true,
+      "rubyLsp.enableExperimentalFeatures": true,
+      "workbench.tree.enableStickyScroll": false,
+      "extensions": ["Shopify.ruby-lsp"]
+    }
+  },
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "vscode"
+
+  "remoteEnv": {
+    "GIT_EDITOR": "code --wait"
+  }
+}
